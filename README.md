@@ -1,2 +1,1 @@
-# problems
-the problems notes from work 
+learning note for myself
