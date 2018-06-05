@@ -16,6 +16,8 @@
       ├── objects/
       └── refs/
 ```
+![](https://github.com/OTREILLY/summary/blob/master/screenshots/git01.jpg)
+
 ```
   git init                              //初始化本地本地
   git add <file> / git add .            //把要提交的所有修改放到暂存区（Stage）
