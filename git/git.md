@@ -2,18 +2,19 @@
 
 一、 git版本库 (.git/)
 ```
-  COMMIT_EDITMSG
-  FETCH_HEAD
-  HEAD
-  ORIG_HEAD
-  config
-  description
-  hooks/
-  index             //暂存区（stage）
-  info/
-  logs/
-  objects/
-  refs/
+        .
+      ├── COMMIT_EDITMSG
+      ├── FETCH_HEAD
+      ├── HEAD
+      ├── ORIG_HEAD
+      ├── config
+      ├── description
+      ├── hooks/
+      ├── index             //暂存区 （stage）
+      ├── info/
+      ├── logs/
+      ├── objects/
+      └── refs/
 ```
 ```
   git init                              //初始化本地本地
