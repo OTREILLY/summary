@@ -52,8 +52,10 @@
 ```
 
 
-【git log】  <br>
-git log [--pretty=oneline]
+【git log】
+```
+  git log [--pretty=oneline]
+```
 
 
 
