@@ -22,8 +22,11 @@
   git init                              //初始化本地本地
   git add <file> / git add .            //把要提交的所有修改放到暂存区（Stage）
   git commit -m "desc"                  //一次性把暂存区的所有修改提交到分支
+  git checkout -- <file>                //最近一次git commit或git add时的状态,如果未提交到stage，回退到git add的状态；已提交且修改了，回退到git commit时的状态
+  git reset HEAD <file>                 //未提交到分支时，将stage区的修改可回退修改到工作区，HEAD表示最新版本
+  
   git pull (git fetch + git merge) 
-  git push    <br>
+  git push
   
 ```  
   
