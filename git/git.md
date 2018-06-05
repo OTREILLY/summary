@@ -49,7 +49,7 @@ git remote show origin
 ```
 
 
-【git log】
+【git log】  <br>
 git log [--pretty=oneline]
 
 
