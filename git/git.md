@@ -4,5 +4,6 @@ git init
 git add <file> / git add .
 git commit -m "desc"
 
+git log [--pretty=oneline]
 
 
