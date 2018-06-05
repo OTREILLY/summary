@@ -32,23 +32,23 @@
   
 【git remote】  <br>
 ```
-  git remote add [remote_name] [url]  <br>
-  git remote rm [remote_name]  <br>
-  git remote -v   <br>
+  git remote add [remote_name] [url]
+  git remote rm [remote_name]
+  git remote -v
 
         origin	https://github.com/OTREILLY/summary.git (fetch)
         origin	https://github.com/OTREILLY/summary.git (push)
-```
-git remote show origin
-```
-* remote origin
-  Fetch URL: https://github.com/OTREILLY/summary.git
-  Push  URL: https://github.com/OTREILLY/summary.git
-  HEAD branch: master
-  Remote branch:
-    master tracked
-  Local ref configured for 'git push':
-    master pushes to master (up to date)
+        
+  git remote show origin
+  
+        * remote origin
+          Fetch URL: https://github.com/OTREILLY/summary.git
+          Push  URL: https://github.com/OTREILLY/summary.git
+          HEAD branch: master
+          Remote branch:
+            master tracked
+          Local ref configured for 'git push':
+            master pushes to master (up to date)
 ```
 
 
