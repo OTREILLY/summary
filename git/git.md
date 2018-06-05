@@ -26,12 +26,13 @@
 ```  
   
 【git remote】  <br>
+```
   git remote add [remote_name] [url]  <br>
   git remote rm [remote_name]  <br>
   git remote -v   <br>
-```
-origin	https://github.com/OTREILLY/summary.git (fetch)
-origin	https://github.com/OTREILLY/summary.git (push)
+
+        origin	https://github.com/OTREILLY/summary.git (fetch)
+        origin	https://github.com/OTREILLY/summary.git (push)
 ```
 git remote show origin
 ```
