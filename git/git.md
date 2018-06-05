@@ -1,15 +1,15 @@
 git 分布式版本控制系统
 
-git init
-git add <file> / git add .
-git commit -m "desc"
-git pull (git fetch + git merge)
-git push 
+  git init <br>
+  git add <file> / git add .  <br>
+  git commit -m "desc"  <br>
+  git pull (git fetch + git merge)  <br>
+  git push    <br>
   
-【git remote】
-git remote add [remote_name] [url]
-git remote rm [remote_name]
-git remote -v
+【git remote】  <br>
+  git remote add [remote_name] [url]  <br>
+  git remote rm [remote_name]  <br>
+  git remote -v   <br>
 ```
 origin	https://github.com/OTREILLY/summary.git (fetch)
 origin	https://github.com/OTREILLY/summary.git (push)
