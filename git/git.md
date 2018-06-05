@@ -1,4 +1,4 @@
-git 分布式版本控制系统
+### git 分布式版本控制系统
 
   git init <br>
   git add <file> / git add .  <br>
@@ -33,7 +33,7 @@ git log [--pretty=oneline]
 
 
 
-问题：
+### 问题：
 1. git pull出错：fatal: refusing to merge unrelated histories
 原因： 本地与远程分支有修改同一内容
 解决：git pull origin master --allow-unrelated-histories, 允许带冲突的pull到本地，然后本地解决冲突
@@ -43,3 +43,11 @@ git log [--pretty=oneline]
 解决：git pull 
 
 3. 
+
+
+
+
+
+### 参考
+
+https://git-scm.com/book/en/v2
