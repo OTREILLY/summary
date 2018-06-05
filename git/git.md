@@ -25,6 +25,9 @@
   git checkout -- <file>                //最近一次git commit或git add时的状态,如果未提交到stage，回退到git add的状态；已提交且修改了，回退到git commit时的状态
   git reset HEAD <file>                 //未提交到分支时，将stage区的修改可回退修改到工作区，HEAD表示最新版本
   
+  
+  git fetch                     //从中拉取所有你还没有的数据，拥有远程仓库中所有分支的引用，可以随时合并或查看
+  
   git pull (git fetch + git merge) 
   git push
   
@@ -33,6 +36,7 @@
 【git remote】  <br>
 ```
   git remote add [remote_name] [url]
+  git remote rename [old_name] [new_name]
   git remote rm [remote_name]
   git remote -v
 
