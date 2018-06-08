@@ -16,39 +16,50 @@
       ├── objects/
       └── refs/
 ```
+![](https://github.com/OTREILLY/summary/blob/master/screenshots/git01.jpg)
+
 ```
   git init                              //初始化本地本地
   git add <file> / git add .            //把要提交的所有修改放到暂存区（Stage）
   git commit -m "desc"                  //一次性把暂存区的所有修改提交到分支
+  git checkout -- <file>                //最近一次git commit或git add时的状态,如果未提交到stage，回退到git add的状态；已提交且修改了，回退到git commit时的状态
+  git reset HEAD <file>                 //未提交到分支时，将stage区的修改可回退修改到工作区，HEAD表示最新版本
+  
+  
+  git fetch                     //从中拉取所有你还没有的数据，拥有远程仓库中所有分支的引用，可以随时合并或查看
+  
   git pull (git fetch + git merge) 
-  git push    <br>
+  git push
   
 ```  
   
 【git remote】  <br>
 ```
-  git remote add [remote_name] [url]  <br>
-  git remote rm [remote_name]  <br>
-  git remote -v   <br>
+  git remote add [remote_name] [url]
+  git remote rename [old_name] [new_name]
+  git remote rm [remote_name]
+  git remote -v
 
         origin	https://github.com/OTREILLY/summary.git (fetch)
         origin	https://github.com/OTREILLY/summary.git (push)
-```
-git remote show origin
-```
-* remote origin
-  Fetch URL: https://github.com/OTREILLY/summary.git
-  Push  URL: https://github.com/OTREILLY/summary.git
-  HEAD branch: master
-  Remote branch:
-    master tracked
-  Local ref configured for 'git push':
-    master pushes to master (up to date)
+        
+  git remote show origin
+  
+        * remote origin
+          Fetch URL: https://github.com/OTREILLY/summary.git
+          Push  URL: https://github.com/OTREILLY/summary.git
+          HEAD branch: master
+          Remote branch:
+            master tracked
+          Local ref configured for 'git push':
+            master pushes to master (up to date)
 ```
 
 
 【git log】
-git log [--pretty=oneline]
+```
+  git log [--pretty=oneline]
+```
 
 
 
