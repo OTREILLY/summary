@@ -28,5 +28,14 @@ float、double类型存在精度丢失问题，即写入数据库的数据未必
 
 二、日期/时间
 
+|type         | 格式           | desc  |
+| ------------- |:-------------:| -----:|
+| date      | right-aligned | $1600 |
+| time      | centered      |   $12 |
+| year | are neat      |    $1 |
+| datetime | are neat      |    $1 |
+| timestamp | are neat      |    $1 |
+
+
 
 三、字符串
