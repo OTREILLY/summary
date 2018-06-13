@@ -2,13 +2,8 @@ MySQL支持数值、日期/时间和字符串(字符)类型。 </br>
 一、数值 </br>
 
 - 整数
-```
-TINYINT:
-SMALLINT:
-MEDIUMINT:
-INT:
-BIGINT:
-```
+
+
 
 - 小数 </br>
 ```
@@ -23,8 +18,6 @@ float、double类型存在精度丢失问题，即写入数据库的数据未必
 . decimal(M,D)的规则和float/double相同，但区别在float/double在不指定M、D时默认按照实际精度来处理而decimal在不指定M、D时默认为decimal(10, 0)
 
 ```
-
-
 
 二、日期/时间
 
@@ -43,3 +36,10 @@ float、double类型存在精度丢失问题，即写入数据库的数据未必
 · 在实际工作中，一张表往往我们会有两个默认字段，一个记录创建时间而另一个记录最新一次的更新时间，这种时候可以使用timestamp类型来实现：
 
 三、字符串
+
+
+
+
+参考：
+
+https://www.cnblogs.com/xrq730/p/8446246.html
