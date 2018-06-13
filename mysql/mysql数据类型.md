@@ -30,11 +30,11 @@ float、double类型存在精度丢失问题，即写入数据库的数据未必
 
 |type         | 大小           | 格式  | desc  |
 | ------------- | --- | ---------- |---------- |
-| date      | right-aligned | $1600 |  |
-| time      | centered      |   $12 |  |
-| year | are neat      |    $1 |  |
-| datetime | are neat      |    $1 |  |
-| timestamp | are neat      |    $1 |  |
+| date      | 3 | yyyy-MM-dd | 日期 |
+| time      | 3      | HH:mm:ss | 时间 |
+| year | 1 | yyyy | 年 | 
+| datetime | 8 | yyyy-MM-dd HH:mm:ss | 日期+时间 |
+| timestamp | 4 | yyyy-MM-dd HH:mm:ss | 日期+时间 |
 
 
 
