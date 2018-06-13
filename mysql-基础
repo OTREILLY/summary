@@ -1,0 +1,9 @@
+
+1. mysql 重置密码：
+mysqld --skip-grant-tables    //无启动登录
+update user set authentication_string=password('password') where user='root'; //重置密码
+flush privileges;
+
+
+
+
