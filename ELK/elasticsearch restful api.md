@@ -48,3 +48,6 @@ curl GET /_mget
 curl GET /myindex/mytype/_mget
 ```
 
+
+#### bulk API 
+
