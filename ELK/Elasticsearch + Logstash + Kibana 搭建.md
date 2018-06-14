@@ -46,6 +46,25 @@ grunt server          //启动elasticsearch-head
   "Started connect web server on http://localhost:9100"
 
 ```
+- logstash 
+```
+cd ${LOGSTASH}/bin
+mkdir conf
+vim conf/logstash-indexer.conf
+  input {
+	  file {
+		  path => ["${LOGSTASH_HOME}/logs/_logs/a.log","${LOGSTASH_HOME}/logs/_logs/b.log"]
+	  }
+  }
+  output {
+	  elasticsearch { hosts => ["localhost:9200"] }
+	  stdout { codec => rubydebug }
+  }
 
+mkdir -p logs/_logs
+touch logs/_logs/a.log
+touch logs/_logs/b.log
+
+```
 
 
