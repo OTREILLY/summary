@@ -51,12 +51,15 @@ curl GET /myindex/mytype/_mget
 
 #### bulk API 
 
-### +++ 检索文档
+#### 检索文档
 
 
-### +++ 分析
+#### 分析
+聚合(aggregations) </br>
 
-### +++ samples
+
+
+#### samples
 - shakespeare </br>
 ```
 curl -X PUT "localhost:9200/shakespeare" -H 'Content-Type: application/json' -d'
