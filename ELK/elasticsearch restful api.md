@@ -1,4 +1,4 @@
-#### elasticsearch restful api
+### elasticsearch restful api
 
 #### 获取文档
 ```
@@ -51,9 +51,12 @@ curl GET /myindex/mytype/_mget
 
 #### bulk API 
 
+### 检索文档
 
 
-#### samples
+### 分析
+
+### samples
 - shakespeare </br>
 ```
 curl -X PUT "localhost:9200/shakespeare" -H 'Content-Type: application/json' -d'
