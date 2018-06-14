@@ -51,3 +51,27 @@ curl GET /myindex/mytype/_mget
 
 #### bulk API 
 
+
+
+#### samples
+- shakespeare </br>
+```
+curl -X PUT "localhost:9200/shakespeare" -H 'Content-Type: application/json' -d'
+{
+ "mappings": {
+  "doc": {
+   "properties": {
+    "speaker": {"type": "keyword"},
+    "play_name": {"type": "keyword"},
+    "linemyid": {"type": "integer"},
+    "speech_number": {"type": "integer"}
+   }
+  }
+ }
+}
+'
+
+curl -H 'Content-Type: application/x-ndjson' -XPOST 'localhost:9200/shakespeare/doc/_bulk?pretty' --data-binary @shakespeare_6.0.json
+```
+
+
