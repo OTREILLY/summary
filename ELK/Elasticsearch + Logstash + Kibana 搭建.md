@@ -52,19 +52,38 @@ cd ${LOGSTASH}/bin
 mkdir conf
 vim conf/logstash-indexer.conf
   input {
-	  file {
-		  path => ["${LOGSTASH_HOME}/logs/_logs/a.log","${LOGSTASH_HOME}/logs/_logs/b.log"]
-	  }
+    file {
+      path => ["${LOGSTASH_HOME}/logs/_logs/a.log","${LOGSTASH_HOME}/logs/_logs/b.log"]
+    }
   }
   output {
-	  elasticsearch { hosts => ["localhost:9200"] }
-	  stdout { codec => rubydebug }
+    elasticsearch { hosts => ["localhost:9200"] }
+    stdout { codec => rubydebug }
   }
 
 mkdir -p logs/_logs
 touch logs/_logs/a.log
 touch logs/_logs/b.log
 
+./bin/logstash -f conf/logstash-indexer.conf		//启动logstash
+
 ```
+
+- kibana
+
+```
+cd ${KIBANA_HOME}
+vim ${KIBANA_HOME}/config/kibana.yml
+
+  elasticsearch.url: "http://localhost:9200"
+
+./bin/kibana		//启动kibana
+
+http://localhost:5601	//web端
+
+```
+
+
+
 
 
