@@ -1,6 +1,6 @@
 ### spring与设计模式
 
-1. spring aop与代理模式 </br>
+一、spring aop与代理模式 </br>
 
 1）静态代理：  </br>
 
