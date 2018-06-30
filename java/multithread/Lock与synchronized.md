@@ -17,7 +17,6 @@
   每个对象都关联一个Monitor监视器，线程进入临界区前，先要获取Monitor锁，如果获得锁，进入临界区，执行操作；如果获取锁失败，进入锁对象的等待队列。任何时刻，只能有一个线程拥有该锁对象，从而实现互斥。 </br>
   拥有监视器对象的线程，可以调用该对象的await()方法，释放锁，进入锁对象的等待队列（主动操作，往往是需要等待某种资源）； </br>
   执行结束，调用锁对象的notify()/notifyAll()方法，唤起锁对象等待队列上的线程，去竞争锁对象。</br>
- 
  . 实现原理 </br>
  同步代码块采用monitorenter、monitorexit指令显式的实现；同步方法则使用ACC_SYNCHRONIZED标记符隐式的实现 </br>
  monitorenter、monitorexit的加锁、解锁过程：</br>
@@ -25,8 +24,7 @@
  * 如果monitor的进入数为0，或当前线程已经获得该monitor，monitor的进入数加1【可重入】 </br>
  * 如果monitor的进入数不为0，且当前线程不是monitor的持有者，进入monitor等待队列  </br>
  * 拥有monitor锁对象的线程执行到monitorexit指令处，monitor进入数减1，当进入数为0时，释放改锁对象。  </br>
- 
- . 对象的锁
+ . 对象的锁 </br>
  MarkWord（对象头）存放对象的锁标记： </br>
  
  
