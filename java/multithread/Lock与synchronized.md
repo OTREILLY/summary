@@ -38,18 +38,17 @@
 二、 Lock </br>
 
 1）jdk Lock框架</br>
- 
+  . Lock   </br>
+    |- ReentrantLock  </br>
+  . ReadWriteLock  </br>
+    |- ReentrantReadWriteLock  </br>
 2）实现原理 </br>
   . AQS:</br>
     state: getState()\setState(int state)\compareAndSetState(int expectState, int update) </br>
     双端队列: head、tail </br>
     owner </br>
   . 互斥锁与共享锁的实现: </br>
-  
-  
-3）优势 </br>
-
-- 读写锁实现高效缓存 </br>
-  
-
-4）举例
+3）条件变量（Condition）: 对锁进行更精确的控制  </br>
+4）优势 </br>
+  . 读写锁实现高效缓存 </br>
+5）举例
