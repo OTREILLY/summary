@@ -8,9 +8,8 @@
   . 对于同步方法，锁是当前实例对象 </br>
   . 对于静态同步方法，锁是当前类 </br>
   . 对于同步方法块，锁是Synchonized括号里配置的对象 </br>
-  
-  【互斥】java 使用对象锁保证工作在共享的数据集上的线程互斥执行。 </br>
-  【通信】java 使用synchronized与wait()/notify()/notifyAll()实现线程通信 </br>
+    【互斥】java 使用对象锁保证工作在共享的数据集上的线程互斥执行。 </br>
+    【通信】java 使用synchronized与wait()/notify()/notifyAll()实现线程通信 </br>
  
  3) 锁原理 </br>
   . Monitor原理  </br>
