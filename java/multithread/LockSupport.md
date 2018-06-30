@@ -1,1 +1,11 @@
 #### LockSupport
+
+1. LockSupport是用来创建锁和其他同步类的基本线程阻塞原语。 </br>
+2. LockSupport 提供park()和unpark()方法实现阻塞线程和解除线程阻塞，LockSupport和每个使用它的线程都与一个许可(permit)关联。</br>
+3. park()与unpark调用： </br>
+  * park() + unpark(): park()时，线程没有获得任何许可，线程阻塞；unpark()时，线程获取许可，并用于解除阻塞； </br>
+  * unpark() + park(): unpark()时，线程获得许可，线程无影响；park()时，用线程已有的许可，防止线程阻塞； </br>
+  * unpark() + unpark() + park(): 同上一种方式，因为同一时刻，一个线程只能获得一个许可，即时多次请求unpark()方法。 </br>
+  * 
+4. LockSupport实现原理 </br>
+Unsafe </br>
