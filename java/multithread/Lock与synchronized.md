@@ -1,5 +1,6 @@
 #### 1.Java中Lock接口比synchronized块的优势是什么？
 #### 2.你需要实现一个高效的缓存，它允许多个用户读，但只允许一个用户写，以此来保持它的完整性，你会怎样去实现它？
+---
 
 一、synchronized</br>
 1) synchronized 是JAVA提供的强制原子性的内置锁机制。每个Java对象都可以作为一个用于同步的锁的角色，这些内置的锁被成为内部锁，线程进入synchronized块之前会自动获得锁，退出、报错异常、时会释放锁。内部锁是一种互斥锁，这就是说，至多只有一个线程可以获得锁，所以被synchronized声明的方法或代码块至多只有一个线程可以进入,从而保证了线程安全。</br>
@@ -25,22 +26,19 @@
  * 拥有monitor锁对象的线程执行到monitorexit指令处，monitor进入数减1，当进入数为0时，释放改锁对象。  </br>
  . 对象的锁 </br>
  MarkWord（对象头）存放对象的锁标记： </br>
- 
- 
- 
- 
- 
- 
+
 4) 锁优化 </br>
   . 锁粗化 </br>
   . 锁消除 </br>
   . 自旋与适应性自旋 </br>
   . 四种锁状态：无锁状态、偏向锁、轻量级锁、重量级锁 </br>
 
+---
+
 二、 Lock </br>
+
 1）jdk Lock框架</br>
  
-
 2）实现原理 </br>
   . AQS:</br>
     state: getState()\setState(int state)\compareAndSetState(int expectState, int update) </br>
