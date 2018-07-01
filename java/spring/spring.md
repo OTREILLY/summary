@@ -1,13 +1,13 @@
 ### spring
 
 
-1、面向接口编程  </br>
-2、控制反转(IOC)与依赖注入(DI):  </br>
+一、面向接口编程  </br>
+二、控制反转(IOC)与依赖注入(DI):  </br>
   控制反转：应用程序本身不负责依赖对象的创建和维护，而是由外部容器负责创建和维护；  </br>
   依赖注入：是IOC的一种实现方式   </br>
   IOC的目的就是：创建对象并且组装对象间的关系   </br>
   
-3、IOC容器  </br>
+三、IOC容器  </br>
   1) 两个包：  </br>
     - org.springframework.beans  </br>
     - org.springframework.context  </br>
@@ -22,7 +22,7 @@
     将Resource定位好的资源载入到BeanDefinition </br>
     将BeanDefiniton注册到容器中 </br>
   
-4、Spring Bean </br>
+四、Spring Bean </br>
   1) spring注入：启动Spring容器加载bean配置的时候，完成对变量的赋值行为  </br>
   - 设置注入  </br>
   - 构造注入  </br>
@@ -178,12 +178,12 @@
  
   - 资源加载  </br>
   
-5. Aware结尾的接口  </br>
+五、 Aware结尾的接口  </br>
   - ApplicationContextAware  </br>
   - BeanFactoryAware  </br>
   ...
 
-6. Spring AOP   </br>
+六、 Spring AOP   </br>
   - AOP基本概念   </br>
     1）编程范式：面向过程编程、面向对象编程、函数式编程、事件驱动编程、面向切面编程   </br>
     2）面向切面编程   </br>
