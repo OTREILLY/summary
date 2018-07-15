@@ -4,7 +4,7 @@
 
 
 
-#### 2. redis分布式锁实现（非重入锁）
+#### 2. redis分布式锁实现（非重入）
 
 ```
 package com.dev.wuxl.distributed_locks;
