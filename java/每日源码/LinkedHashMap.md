@@ -77,8 +77,14 @@ public static void main(String[] args) {
 
 ---
 
-### 2. LinkedHashMap源码解读
+### 2. LinkedHashMap源码解读 (基于jdk1.8)
 
+1) 数据结构： HashMap + 双向循环链表
+
+
+
+
+2）get(Object o)
 
 
 
