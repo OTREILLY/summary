@@ -83,6 +83,7 @@ public static void main(String[] args) {
 
 ![](https://github.com/OTREILLY/summary/blob/master/screenshots/linkedhashmap1.png)
 
+![](https://github.com/OTREILLY/summary/blob/master/screenshots/linkedhashmap2.png)
 
 
 
