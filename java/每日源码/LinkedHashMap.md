@@ -81,6 +81,8 @@ public static void main(String[] args) {
 
 1) 数据结构： HashMap + 双向循环链表
 
+![](https://github.com/OTREILLY/summary/blob/master/screenshots/linkedhashmap1.png)
+
 
 
 
