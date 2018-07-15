@@ -208,7 +208,7 @@ typedef struct redisObject {
     volatile-lru, allkeys-lru回收算法
 ```
 
-        KEY命令：        
+#### KEY命令：        
     * DEL
     * DUMP
     * EXISTS
@@ -327,109 +327,115 @@ typedef struct redisObject {
     * ZREMRANGEBYLEX
 
 
-二、redis数据库
+### 二、redis数据库
   
-1.   数据库
-        struct redisServer{
-       redisDb *db;  // 数据库数组  
-       int dbnum;  // 默认16个
-   }redisServer;
+#### 1. 数据库
+```
+struct redisServer{
+    redisDb *db;  // 数据库数组  
+    int dbnum;  // 默认16个
+}redisServer;
 
-    struct redisClient{
-       redisDb *db;  // 数据库数组  
-       int dbnum;  // 默认16个
-   }redisClient;
+struct redisClient{
+    redisDb *db;  // 数据库数组  
+    int dbnum;  // 默认16个
+}redisClient;
+```
+
+SELECT n   切换数据库
+
+#### 2. 数据库键空间
+```
+typedef  struct redisDb{
+    dict *dict;      // 数据库键空间，保存所有的键值对
+    dict *expires;  // 过期字典，保存所有键的过期时间
+}
+```   
+```
+键空间中的每个键都是字符串对象，对应的值是任意Redis对象
+添加新键、删除键、更新键、读取键值
+
+键对象的过期时间：
+   键的生存时间或过期时间： 过期字典（键对象：UNIX时间戳（单位ms））            
+   设置过期时间：
+        EXPIRE <key> <ttl>
+        PEXPIRE <key> <ttl>
+        EXPIREAT <key> <timestamp>
+        PEXPIREAT <key> <timestamp>
+   移除过期时间：
+        PERSIST <key>
+   计算剩余时间：
+        TTL <key>    
+        PTTL <key>  
+   过期键删除策略：
+        定时删除、惰性删除、定时删除
+   AOF/RDB持久化和复制对过期键的处理：
         
-        SELECT n   切换数据库
-2. 数据库键空间
-        typedef  struct redisDb{
-        dict *dict;      // 数据库键空间，保存所有的键值对
-        dict *expires;  // 过期字典，保存所有键的过期时间
-   }
-       键空间中的每个键都是字符串对象，对应的值是任意Redis对象
-       添加新键、删除键、更新键、读取键值
-       
-       键对象的过期时间：
-           键的生存时间或过期时间： 过期字典（键对象：UNIX时间戳（单位ms））            
-           设置过期时间：
-                EXPIRE <key> <ttl>
-                PEXPIRE <key> <ttl>
-                EXPIREAT <key> <timestamp>
-                PEXPIREAT <key> <timestamp>
-           移除过期时间：
-                PERSIST <key>
-           计算剩余时间：
-                TTL <key>    
-                PTTL <key>  
-           过期键删除策略：
-                定时删除、惰性删除、定时删除
-           AOF/RDB持久化和复制对过期键的处理：
-        
+```
 
-3. 持久化
+### 3. 持久化
+```
+RDB持久化
+    1）将某个时间点上的数据库状态保存到一个RDB文件中，RDB文件是一个经过压缩的二进制文件。
+    2）SAVE/BGSAVE:
+            SAVE命令会阻塞Redis服务器进程，直到RDB文件创建完毕，期间，服务器不能处理任何命令请求。
+            BGSAVE命令不会阻塞Redis服务器进程，而是派生出一个子进程负责创建RDB文件，服务器进程处理请求
+    3）自动载入RDB文件（服务器启动时，自动执行）
+    4）BGSAVE执行期间，SAVE和BGSAVE命令会被拒绝
+    5）SAVE/BGSAVE执行策略：
+            手动执行或自动间隔性执行
+    6）RDB文件：
+ AOF持久化
+    1）保存服务器所执行的写命令来记录数据库的状态，被写入AOF文件的所有命令都是以redis的命令请求协议格式保
+         存的。
+    2）AOF持久化步骤：
+         命令追加、文件写入、文件同步
+         事件循环/aof_buf
+   3）flushAppendOnlyFile策略：    
+            always:   将oaf_buf缓冲区中的所有内容写入并同步到AOF文件
+            everysec: 将oaf_buf缓冲区中的所有内容写入到AOF文件，定时同步
+            no: 将oaf_buf缓冲区中的所有内容写入到AOF文件，但不同步，积累一段时间后同步
+    4）AOF文件载入与数据还原
+            伪客户端执行AOF中的写命令
+    5）AOF重写
+    6）BGREWRITEAOF与SAVE/BGSAVE
+    7）AOF与RDB：
+            优先载入AOF文件
+```
 
-            RDB持久化
-                1）将某个时间点上的数据库状态保存到一个RDB文件中，RDB文件是一个经过压缩的二进制文件。
-                2）SAVE/BGSAVE:
-                        SAVE命令会阻塞Redis服务器进程，直到RDB文件创建完毕，期间，服务器不能处理任何命令请求。
-                        BGSAVE命令不会阻塞Redis服务器进程，而是派生出一个子进程负责创建RDB文件，服务器进程处理请求
-                3）自动载入RDB文件（服务器启动时，自动执行）
-                4）BGSAVE执行期间，SAVE和BGSAVE命令会被拒绝
-                5）SAVE/BGSAVE执行策略：
-                        手动执行或自动间隔性执行
-                6）RDB文件：
-             AOF持久化
-                1）保存服务器所执行的写命令来记录数据库的状态，被写入AOF文件的所有命令都是以redis的命令请求协议格式保
-                     存的。
-                2）AOF持久化步骤：
-                     命令追加、文件写入、文件同步
-                     事件循环/aof_buf
-               3）flushAppendOnlyFile策略：    
-                        always:   将oaf_buf缓冲区中的所有内容写入并同步到AOF文件
-                        everysec: 将oaf_buf缓冲区中的所有内容写入到AOF文件，定时同步
-                        no: 将oaf_buf缓冲区中的所有内容写入到AOF文件，但不同步，积累一段时间后同步
-                4）AOF文件载入与数据还原
-                        伪客户端执行AOF中的写命令
-                5）AOF重写
-                6）BGREWRITEAOF与SAVE/BGSAVE
-                7）AOF与RDB：
-                        优先载入AOF文件
-            事件
-                1）Redis服务器是一个事件驱动程序： 文件事件、时间事件
-                2）文件事件：
-                        文件事件处理器：基于Reactor模式实现的网络通信程序
-                        文件事件是对套接字操作的抽象：AE_READABLE\AE_WRITABLE
-                3）时间事件：
-                        定时事件和周期性事件
-                4）事件调度和执行规则：
-            客户端
+#### 4. 事件
+```
+1）Redis服务器是一个事件驱动程序： 文件事件、时间事件
+2）文件事件：
+    文件事件处理器：基于Reactor模式实现的网络通信程序
+    文件事件是对套接字操作的抽象：AE_READABLE\AE_WRITABLE
+3）时间事件：
+    定时事件和周期性事件
+4）事件调度和执行规则：
+```    
 
+#### 5. 客户端与服务器
 
-            服务器
-                        
-
-三、Redis集群
+### 三、Redis集群
     
-1. 复制
+1. 复制 </br>
 
 2. 集群
 
 
+### 四、独立功能
 
-四、 独立功能
-
-    redis事务：MULTI EXEC DISCARD WATCH UNWATCH
-    redis事务：事务队列，入队与出队
-    redis事务：ACID
-    redis事务：不支持回滚 （1.  2.简单模型）
-    redis事务： WATCH 与 乐观锁
-     
-
-
+```
+redis事务：MULTI EXEC DISCARD WATCH UNWATCH
+redis事务：事务队列，入队与出队
+redis事务：ACID
+redis事务：不支持回滚 （1.  2.简单模型）
+redis事务： WATCH 与 乐观锁
+```
 
 
-参考
-《Redis设计与实现》 黄健宏 著
-https://github.com/menwengit/redis_source_annotation/blob/master/README.md
-https://zhuanlan.zhihu.com/p/21368183?refer=zhangtielei
-https://www.cnblogs.com/chenpingzhao/archive/2017/06/10/6965164.html
+### 参考
+《Redis设计与实现》 黄健宏 著  </br>
+https://github.com/menwengit/redis_source_annotation/blob/master/README.md </br>
+https://zhuanlan.zhihu.com/p/21368183?refer=zhangtielei   </br>
+https://www.cnblogs.com/chenpingzhao/archive/2017/06/10/6965164.html  </br>
