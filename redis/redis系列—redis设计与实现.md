@@ -83,7 +83,7 @@ typedef struct dictType {
     void *(*valDup)(void *privdata, const void *obj);        // 复制值的函数
     int (*keyCompare)(void *privdata, const void *key1, const void *key2);    // 对比键的函数
     void (*keyDestructor)(void *privdata, void *key);        // 销毁键的函数
-void (*valDestructor)(void *privdata, void *obj);        // 销毁值的函数
+    void (*valDestructor)(void *privdata, void *obj);        // 销毁值的函数
 } dictType;    
 ```
 ```
