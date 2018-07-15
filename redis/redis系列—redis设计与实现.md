@@ -50,10 +50,10 @@ typedef struct list {
  * 每个字典都使用两个哈希表，从而实现渐进式 rehash 。
  */
 typedef struct dictht {
-            dictEntry **table;    // 哈希表数组
-            unsigned long size;    // 哈希表大小
-            unsigned long sizemask;    // 哈希表大小掩码，用于计算索引值 等于 size - 1
-            unsigned long used;    // 该哈希表已有节点的数量
+    dictEntry **table;    // 哈希表数组
+    unsigned long size;    // 哈希表大小
+    unsigned long sizemask;    // 哈希表大小掩码，用于计算索引值 等于 size - 1
+    unsigned long used;    // 该哈希表已有节点的数量
 } ditch;
 
 /*哈希表节点*/
